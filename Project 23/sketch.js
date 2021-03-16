@@ -21,10 +21,21 @@ function setup() {
 	
 	engine = Engine.create();
 	world = engine.world;
-	box1 = new box(350, 305, 20, 100);
-	box2 = new box(400, 320, 200, 20);
-	box3 = new box (450, 335, 20, 100);
 
+	box1 =createSprite(width/2- -90, 610, 20, 100);
+	box1.shapeColor = color (255,0,0);
+    box1Body = Bodies.rectangle(width/2-90 ,610,20,200,{isStatic:true});
+	World.add(world, box1Body); 
+
+	box2 = createSprite(width/2-20, 650, 200, 20);
+    box2.shapeColor = color (255,0,0);
+    box2Body = Bodies.rectangle(width/2-20,650,20,200,{isStatic:true});
+	World.add(world, box2Body);
+
+	box3 = createSprite(width/2-130, 610, 20, 100);
+    box3.shapeColor = color (255,0,0);
+    box3Body = Bodies.rectangle(width/2-130,610,20,200,{isStatic:true});
+    World.add(world, box3Body);
 
 	packageSprite=createSprite(width/2, 80, 10,10);
 	packageSprite.addImage(packageIMG)
@@ -41,7 +52,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.3, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -60,9 +71,6 @@ function draw() {
   background(0);
   Engine.update(engine);
 
-  box1.display();
-  box2.display();
-  box3.display();
   packageSprite.x= packageBody.position.x; 
   packageSprite.y= packageBody.position.y; 
   drawSprites();
